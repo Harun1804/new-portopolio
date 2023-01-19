@@ -51,64 +51,22 @@
                     </a>
                 </li>
 
-                {{-- <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ (Request::segment(2) == 'job') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-stack"></i>
-                        <span>Components</span>
+                        <i class="bi bi-briefcase"></i>
+                        <span>Job</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="component-alert.html">Alert</a>
+                        <li class="submenu-item {{ (Request::segment(3) == 'available') ? 'active' : '' }}">
+                            <a href="{{ route('admin.job.available') }}">Available</a>
                         </li>
-                        <li class="submenu-item">
-                            <a href="component-badge.html">Badge</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-breadcrumb.html">Breadcrumb</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-button.html">Button</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-card.html">Card</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-carousel.html">Carousel</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-collapse.html">Collapse</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-dropdown.html">Dropdown</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-list-group.html">List Group</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-modal.html">Modal</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-navs.html">Navs</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-pagination.html">Pagination</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-progress.html">Progress</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-spinner.html">Spinner</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-toasts.html">Toasts</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-tooltip.html">Tooltip</a>
+                        <li class="submenu-item {{ (Request::segment(3) == 'person') ? 'active' : '' }}">
+                            <a href="{{ route('admin.job.person') }}">Person</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub">
+                {{-- <li class="sidebar-item has-sub">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-collection-fill"></i>
                         <span>Extra Components</span>

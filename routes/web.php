@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -25,6 +26,10 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
     Route::post('/logout','logout')->name('logout');
 });
 
-Route::prefix('/admin')->middleware('auth')->name('admin.')->group(function(){
-    Route::get('/dashboard',DashboardController::class)->name('dashboard');
+Route::prefix('/admin')->middleware('auth')->controller(AdminController::class)->name('admin.')->group(function(){
+    Route::get('/dashboard','dashboard')->name('dashboard');
+    Route::prefix('/job')->name('job.')->group(function(){
+        Route::get('/available','availableJob')->name('available');
+        Route::get('/person','personJob')->name('person');
+    });
 });

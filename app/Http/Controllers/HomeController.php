@@ -8,11 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('homepage.welcome');
     }
 
     public function show($id)
     {
-        return view('project-detail');
+        return view('homepage.project-detail');
     }
 }

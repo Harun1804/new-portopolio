@@ -21,8 +21,10 @@ Route::get('/{id}', [HomeController::class,'show'])->name('show');
 
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function(){
     Route::get('/login','loginPage')->name('login');
+    Route::post('/proces/login','loginProcess')->name('process');
+    Route::post('/logout','logout')->name('logout');
 });
 
-Route::prefix('/admin')->name('admin.')->group(function(){
+Route::prefix('/admin')->middleware('auth')->name('admin.')->group(function(){
     Route::get('/dashboard',DashboardController::class)->name('dashboard');
 });

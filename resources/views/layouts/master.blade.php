@@ -7,12 +7,12 @@
     <title>Harun Ar - Rasyid Resume</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    @include('layouts.includes.header')
+    @include('layouts.includes.homepage.header')
 </head>
 
 <body>
     <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-    @include('layouts.includes.sidebar')
+    @include('layouts.includes.homepage.sidebar')
 
     @yield('hero-section')
 
@@ -23,7 +23,7 @@
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-    @include('layouts.includes.footer')
+    @include('layouts.includes.homepage.footer')
 </body>
 
 </html>

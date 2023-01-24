@@ -102,6 +102,4 @@ class Job extends Component
         ModelsJob::find($this->job_id)->delete();
         $this->alert('success','Job Has Been Deleted');
     }
-
-
 }

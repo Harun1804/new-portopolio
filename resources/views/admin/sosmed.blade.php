@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Job List')
+@section('title','Social Media')
 @section('content')
-<livewire:admin.job>
+<livewire:admin.sosmed>
 @endsection

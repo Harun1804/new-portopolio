@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Job;
 use App\Models\About;
+use App\Models\SocialMedia;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'slug'
     ];
 
     /**
@@ -47,6 +50,11 @@ class User extends Authenticatable
     public function jobs()
     {
         return $this->belongsToMany(Job::class)->withTimestamps();
+    }
+
+    public function sosmeds()
+    {
+        return $this->belongsToMany(SocialMedia::class)->withPivot(['url'])->withTimestamps();
     }
 
     public function about()

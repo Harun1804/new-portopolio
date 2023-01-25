@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harun Ar - Rasyid - Resume</title>
+    <title>Portopolio Resume</title>
     @include('layouts.includes.admin.header')
 </head>
 

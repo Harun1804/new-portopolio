@@ -12,13 +12,13 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function availableJob()
+    public function job()
     {
         return view('admin.available-job');
     }
 
-    public function personJob()
+    public function sosmed()
     {
-        return view('admin.person-job');
+        return view('admin.sosmed');
     }
 }

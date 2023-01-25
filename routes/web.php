@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +27,8 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
 
 Route::prefix('/admin')->middleware('auth')->controller(AdminController::class)->name('admin.')->group(function(){
     Route::get('/dashboard','dashboard')->name('dashboard');
-    Route::prefix('/job')->name('job.')->group(function(){
-        Route::get('/available','availableJob')->name('available');
-        Route::get('/person','personJob')->name('person');
+    Route::prefix('/master-data')->name('master.data.')->group(function(){
+        Route::get('/job','job')->name('job');
+        Route::get('/sosmed','sosmed')->name('sosmed');
     });
 });

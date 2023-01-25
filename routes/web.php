@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +31,5 @@ Route::prefix('/admin')->middleware('auth')->controller(AdminController::class)-
         Route::get('/job','job')->name('job');
         Route::get('/sosmed','sosmed')->name('sosmed');
     });
+    Route::get('/user','user')->name('user');
 });

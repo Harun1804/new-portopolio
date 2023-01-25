@@ -66,6 +66,13 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'user') ? 'active' : '' }}">
+                        <a href="{{ route('admin.user') }}" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
                 @endif
 
             </ul>

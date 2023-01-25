@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,5 +20,10 @@ class AdminController extends Controller
     public function sosmed()
     {
         return view('admin.sosmed');
+    }
+
+    public function user()
+    {
+        return view('admin.users');
     }
 }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('social_media_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('social_media_id')->constrained('social_media');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('social_media_id')->constrained('social_media')->onDelete('cascade');
             $table->text('url');
             $table->timestamps();
         });

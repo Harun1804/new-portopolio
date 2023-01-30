@@ -82,6 +82,13 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'about') ? 'active' : '' }}">
+                        <a href="{{ route('user.about') }}" class="sidebar-link">
+                            <i class="bi bi-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

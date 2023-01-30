@@ -8,12 +8,12 @@ trait HasImage
 {
     public function uploadImage($file, $path)
     {
-        $file->storeAs('public/img/'.$path, $file->hasName());
+        $file->storeAs('public/img/'.$path, $file->hashName());
     }
 
-    public function removeImage($file, $path)
+    public function removeImage($filename, $path)
     {
-        Storage::disk('local')->delete('public/img/'.$path.'/'.basename($file));
+        Storage::disk('local')->delete('public/img/'.$path.'/'.basename($filename));
     }
 }
 

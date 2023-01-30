@@ -42,4 +42,9 @@ class About extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeGetByUser($query, $user_id)
+    {
+        return $query->whereUserId($user_id);
+    }
 }

@@ -75,6 +75,14 @@
                     </li>
                 @endif
 
+                @if (auth()->user()->role == 'user')
+                    <li class="sidebar-item {{ (Request::segment(2) == 'dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('user.dashboard') }}" class="sidebar-link">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

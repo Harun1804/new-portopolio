@@ -20,13 +20,21 @@ class About extends Model
         'nation',
         'freelance_status',
         'description',
-        'profile'
+        'profile',
+        'hero'
     ];
 
     protected function profile():Attribute
     {
         return Attribute::make(
             get: fn ($value) => url('/storage/img/profile/'.$value),
+        );
+    }
+
+    public function hero():Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => url('/storage/img/hero/'.$value),
         );
     }
 

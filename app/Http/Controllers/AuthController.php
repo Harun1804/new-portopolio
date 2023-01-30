@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+            return $this->redirection(Auth::user()->role);
         }
 
         return redirect()->back()->with('error','Email & Password does not match');
@@ -34,5 +34,18 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('welcome');
+    }
+
+    private function redirection($role)
+    {
+        switch ($role) {
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+                break;
+
+            default:
+                return redirect()->route('user.dashboard');
+                break;
+        }
     }
 }

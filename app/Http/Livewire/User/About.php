@@ -62,11 +62,11 @@ class About extends Component
         $about = ModelsAbout::getByUser($this->user->id)->first();
         if ($about) {
             $this->removeImage($about->profile,'profile');
-            $this->removeImage($about->hero,'header');
+            $this->removeImage($about->hero,'hero');
         }
 
         $this->uploadImage($this->profile,'profile');
-        $this->uploadImage($this->header,'header');
+        $this->uploadImage($this->header,'hero');
 
         ModelsAbout::updateOrCreate([
             'user_id'           => $this->user->id

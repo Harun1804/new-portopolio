@@ -14,57 +14,68 @@
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                        href="#home" role="tab" aria-controls="home"
-                                        aria-selected="true">Home</a>
+                                    <a class="nav-link active" id="basic-tab" data-bs-toggle="tab"
+                                        href="#basic" role="tab" aria-controls="basic"
+                                        aria-selected="true">Basic</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                        href="#profile" role="tab" aria-controls="profile"
-                                        aria-selected="false">Profile</a>
+                                    <a class="nav-link" id="location-tab" data-bs-toggle="tab"
+                                        href="#location" role="tab" aria-controls="location"
+                                        aria-selected="false">Lokasi</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                        href="#contact" role="tab" aria-controls="contact"
-                                        aria-selected="false">Contact</a>
+                                    <a class="nav-link" id="desc-tab" data-bs-toggle="tab"
+                                        href="#desc" role="tab" aria-controls="desc"
+                                        aria-selected="false">Deskripsi</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                    aria-labelledby="home-tab">
-                                    <p class="my-2">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural
-                                            lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </p>
+                                <div class="tab-pane fade show active" id="basic" role="tabpanel"
+                                    aria-labelledby="basic-tab">
+                                    <table class="my-2">
+                                        <tr>
+                                            <td>Tanggal Lahir</td>
+                                            <td> : </td>
+                                            <td>{{ \Carbon\Carbon::parse($about->date_of_birth)->format('d F Y') }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Situs</td>
+                                            <td> : </td>
+                                            <td>
+                                                <a href="{{ $about->site }}">Situs Web</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone</td>
+                                            <td> : </td>
+                                            <td>{{ $about->phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Freelance Status</td>
+                                            <td> : </td>
+                                            <td><strong>{{ \Str::upper($about->freelance_status) }}</strong></td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel"
-                                    aria-labelledby="profile-tab">
-                                    Integer interdum diam eleifend metus lacinia, quis
-                                    gravida eros mollis. Fusce non sapien sit amet magna
-                                    dapibus ultrices. Morbi tincidunt magna ex, eget
-                                    faucibus sapien bibendum non. Duis a mauris ex. Ut
-                                    finibus risus sed massa mattis porta. Aliquam sagittis
-                                    massa et purus efficitur ultricies. Integer pretium
-                                    dolor at sapien laoreet ultricies. Fusce congue et lorem
-                                    id convallis. Nulla volutpat tellus nec molestie
-                                    finibus. In nec odio tincidunt eros finibus ullamcorper.
-                                    Ut sodales, dui nec posuere finibus, nisl sem aliquam
-                                    metus, eu accumsan lacus felis at odio. Sed lacus quam,
-                                    convallis quis condimentum ut, accumsan congue massa.
-                                    Pellentesque et quam vel massa pretium ullamcorper vitae
-                                    eu tortor.
+                                <div class="tab-pane fade" id="location" role="tabpanel"
+                                    aria-labelledby="location-tab">
+                                    <table class="my-2">
+                                        <tr>
+                                            <td>Kota Asal</td>
+                                            <td> : </td>
+                                            <td>{{ $about->city }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Negara Asal</td>
+                                            <td> : </td>
+                                            <td>{{ $about->nation }}</td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div class="tab-pane fade" id="contact" role="tabpanel"
-                                    aria-labelledby="contact-tab">
+                                <div class="tab-pane fade" id="desc" role="tabpanel"
+                                    aria-labelledby="desc-tab">
                                     <p class="mt-2">
-                                        Duis ultrices purus non eros fermentum hendrerit.
-                                        Aenean ornare interdum viverra. Sed ut odio velit.
-                                        Aenean eu diam dictum nibh rhoncus mattis quis ac
-                                        risus. Vivamus eu congue ipsum. Maecenas id
-                                        sollicitudin ex. Cras in ex vestibulum, posuere orci
-                                        at, sollicitudin purus. Morbi mollis elementum enim,
-                                        in cursus sem placerat ut.
+                                        {{ $about->description }}
                                     </p>
                                 </div>
                             </div>
@@ -74,7 +85,7 @@
             </div>
         </div>
         <div class="col-md-4">
-
+            <img class="img img-fluid" src="{{ $about->hero }}">
         </div>
     </div>
 </section>

@@ -15,4 +15,9 @@ class UserController extends Controller
     {
         return view('user.about');
     }
+
+    public function sosmed()
+    {
+        return view('user.sosmed');
+    }
 }

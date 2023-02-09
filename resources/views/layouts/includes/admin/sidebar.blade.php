@@ -89,6 +89,13 @@
                             <span>About</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'sosmed') ? 'active' : '' }}">
+                        <a href="{{ route('user.sosmed') }}" class="sidebar-link">
+                            <i class="bi bi-instagram"></i>
+                            <span>Sosial Media</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

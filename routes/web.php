@@ -39,5 +39,6 @@ Route::middleware('auth')->group(function(){
     Route::prefix('/user')->controller(UserController::class)->name('user.')->group(function(){
         Route::get('/dashboard','dashboard')->name('dashboard');
         Route::get('/about','about')->name('about');
+        Route::get('/sosmed','sosmed')->name('sosmed');
     });
 });

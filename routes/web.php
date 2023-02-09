@@ -17,7 +17,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('welcome');
+Route::get('/{slug?}', [HomeController::class,'index'])->name('welcome');
 Route::get('/{id}', [HomeController::class,'show'])->name('show');
 
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function(){

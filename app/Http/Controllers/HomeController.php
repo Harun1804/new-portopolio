@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index($slug = null)
     {
-        return view('homepage.welcome');
+        $user = User::with('sosmeds','jobs','about')->whereSlug($slug)->first();
+        return view('homepage.welcome', compact(['user']));
     }
 
     public function show($id)

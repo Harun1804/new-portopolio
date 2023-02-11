@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Job;
 use App\Models\About;
+use App\Models\Skill;
 use App\Models\SocialMedia;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function sosmeds()
     {
         return $this->belongsToMany(SocialMedia::class)->withPivot(['url'])->withTimestamps();
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class)->withPivot(['value'])->withTimestamps();
     }
 
     public function about()

@@ -3,37 +3,33 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
-use Illuminate\Support\Str;
 use App\Traits\HasSweetalert;
-use App\Models\User as ModelUser;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Skill as ModelsSkill;
 
-class User extends Component
+class Skill extends Component
 {
     use HasSweetalert;
 
     public $is_form = false, $is_update = false;
-    public $name, $email, $user_id;
+    public $name, $skill_id;
 
     protected $listeners = ['destroy'];
 
     public function render()
     {
-        $users = ModelUser::searching($this->name, $this->email)->userOnly()->latest()->paginate(10);
-        return view('livewire.admin.user.index', compact('users'));
+        $skills = ModelsSkill::withCount('users')->searching($this->name)->latest()->paginate(10);
+        return view('livewire.admin.skill.index', compact('skills'));
     }
 
     private function resetForm()
     {
         $this->is_form  = false;
         $this->name     = null;
-        $this->email    = null;
     }
 
     protected $rules = [
-        'name'  => 'required|unique:users,name',
-        'email' => 'required|email:dns|unique:users,email'
+        'name' => 'required|unique:skills,name'
     ];
 
     public function create()
@@ -48,18 +44,14 @@ class User extends Component
 
         DB::beginTransaction();
         try {
-            ModelUser::create([
+            ModelsSkill::create([
                 'name'      => $this->name,
-                'email'     => $this->email,
-                'slug'      => Str::slug($this->name).'-'.time(),
-                'password'  => Hash::make('portouser'),
-                'role'      => 'user'
             ]);
 
             DB::commit();
             $this->resetForm();
             $this->is_form = false;
-            $this->alert('success','User Has Been Created');
+            $this->alert('success','Skill Has Been Created');
         } catch (\Exception $e) {
             DB::rollBack();
             $this->alert('error',$e->getMessage());
@@ -68,10 +60,9 @@ class User extends Component
 
     public function edit($id)
     {
-        $user = ModelUser::find($id);
-        $this->user_id      = $user->id;
-        $this->name         = $user->name;
-        $this->email        = $user->email;
+        $skill = ModelsSkill::find($id);
+        $this->skill_id       = $skill->id;
+        $this->name         = $skill->name;
         $this->is_form      = true;
         $this->is_update    = true;
     }
@@ -79,23 +70,20 @@ class User extends Component
     public function update()
     {
         $this->validate([
-            'name'      => 'required|unique:users,name,'. $this->user_id,
-            'email'     => 'required|email:dns|unique:users,email,'. $this->user_id,
+            'name'      => 'required|unique:skills,name,'. $this->skill_id,
         ]);
 
         DB::beginTransaction();
         try {
-            ModelUser::find($this->user_id)->fill([
+            ModelsSkill::find($this->skill_id)->fill([
                 'name'      => $this->name,
-                'email'     => $this->email,
-                'slug'      => Str::slug($this->name),
             ])->save();
 
             DB::commit();
             $this->resetForm();
             $this->is_form = false;
             $this->is_update = false;
-            $this->alert('success','User Has Been Updated');
+            $this->alert('success','Skill Has Been Updated');
         } catch (\Exception $e) {
             DB::rollBack();
             $this->alert('error',$e->getMessage());
@@ -104,14 +92,14 @@ class User extends Component
 
     public function confirm($id)
     {
-        $user = ModelUser::find($id);
-        $this->user_id = $user->id;
+        $skill = ModelsSkill::find($id);
+        $this->skill_id = $skill->id;
         $this->alertConfirm();
     }
 
     public function destroy()
     {
-        ModelUser::find($this->user_id)->delete();
-        $this->alert('success','User Has Been Deleted');
+        ModelsSkill::find($this->skill_id)->delete();
+        $this->alert('success','Skill Has Been Deleted');
     }
 }

@@ -22,6 +22,11 @@ class AdminController extends Controller
         return view('admin.sosmed');
     }
 
+    public function skill()
+    {
+        return view('admin.skill');
+    }
+
     public function user()
     {
         return view('admin.users');

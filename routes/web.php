@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function(){
         Route::prefix('/master-data')->name('master.data.')->group(function(){
             Route::get('/job','job')->name('job');
             Route::get('/sosmed','sosmed')->name('sosmed');
+            Route::get('/skill','skill')->name('skill');
         });
         Route::get('/user','user')->name('user');
     });

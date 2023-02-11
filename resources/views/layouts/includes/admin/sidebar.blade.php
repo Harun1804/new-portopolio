@@ -64,6 +64,9 @@
                             <li class="submenu-item {{ (Request::segment(3) == 'sosmed') ? 'active' : '' }}">
                                 <a href="{{ route('admin.master.data.sosmed') }}">Social Media</a>
                             </li>
+                            <li class="submenu-item {{ (Request::segment(3) == 'skill') ? 'active' : '' }}">
+                                <a href="{{ route('admin.master.data.skill') }}">Skill</a>
+                            </li>
                         </ul>
                     </li>
 

@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/job','job')->name('job');
             Route::get('/sosmed','sosmed')->name('sosmed');
             Route::get('/skill','skill')->name('skill');
+            Route::get('/category','category')->name('category');
         });
         Route::get('/user','user')->name('user');
     });

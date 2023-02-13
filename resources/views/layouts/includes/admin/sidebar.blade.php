@@ -67,6 +67,9 @@
                             <li class="submenu-item {{ (Request::segment(3) == 'skill') ? 'active' : '' }}">
                                 <a href="{{ route('admin.master.data.skill') }}">Skill</a>
                             </li>
+                            <li class="submenu-item {{ (Request::segment(3) == 'category') ? 'active' : '' }}">
+                                <a href="{{ route('admin.master.data.category') }}">Category</a>
+                            </li>
                         </ul>
                     </li>
 

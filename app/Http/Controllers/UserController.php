@@ -20,4 +20,9 @@ class UserController extends Controller
     {
         return view('user.sosmed');
     }
+
+    public function skill()
+    {
+        return view('user.skill');
+    }
 }

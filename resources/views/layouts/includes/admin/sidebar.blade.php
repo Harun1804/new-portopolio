@@ -105,6 +105,13 @@
                             <span>Sosial Media</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'skill') ? 'active' : '' }}">
+                        <a href="{{ route('user.skill') }}" class="sidebar-link">
+                            <i class="bi bi-list-stars"></i>
+                            <span>Skill</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

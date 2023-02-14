@@ -43,5 +43,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/dashboard','dashboard')->name('dashboard');
         Route::get('/about','about')->name('about');
         Route::get('/sosmed','sosmed')->name('sosmed');
+        Route::get('/skill','skill')->name('skill');
     });
 });

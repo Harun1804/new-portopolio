@@ -112,6 +112,13 @@
                             <span>Skill</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'portopolio') ? 'active' : '' }}">
+                        <a href="{{ route('user.portopolio') }}" class="sidebar-link">
+                            <i class="bi bi-kanban"></i>
+                            <span>Portopolio</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Portopolio;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -12,6 +13,11 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function portopolios()
+    {
+        return $this->hasMany(Portopolio::class);
+    }
 
     public function scopeSearching($query, $name)
     {

@@ -332,6 +332,7 @@
   cursor: pointer;
 }
 .swal2-styled.swal2-confirm {
+  margin-right: 6px;
   border: 0;
   border-radius: 0.25em;
   background: initial;

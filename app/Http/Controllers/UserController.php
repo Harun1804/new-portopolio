@@ -25,4 +25,9 @@ class UserController extends Controller
     {
         return view('user.skill');
     }
+
+    public function portopolio()
+    {
+        return view('user.portopolio');
+    }
 }

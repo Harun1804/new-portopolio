@@ -44,5 +44,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/about','about')->name('about');
         Route::get('/sosmed','sosmed')->name('sosmed');
         Route::get('/skill','skill')->name('skill');
+        Route::get('/portopolio','portopolio')->name('portopolio');
     });
 });

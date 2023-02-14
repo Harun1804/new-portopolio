@@ -25,7 +25,7 @@
                                     @forelse ($categories as $category)
                                     <tr>
                                         <td class="text-bold-500">{{ ucfirst($category->name ) }}</td>
-                                        <td class="text-bold-500">0</td>
+                                        <td class="text-bold-500">{{ $category->portopolios_count }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning d-inline text-white" wire:click="edit({{ $category->id }})">Edit</button>
                                             <form method="post" wire:submit.prevent="confirm({{ $category->id }})" class="d-inline">

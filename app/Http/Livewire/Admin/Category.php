@@ -17,7 +17,7 @@ class Category extends Component
 
     public function render()
     {
-        $categories = ModelsCategory::searching($this->name)->latest()->paginate(10);
+        $categories = ModelsCategory::withCount('portopolios')->searching($this->name)->latest()->paginate(10);
         return view('livewire.admin.category.index', compact('categories'));
     }
 

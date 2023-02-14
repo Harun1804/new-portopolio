@@ -32,6 +32,11 @@ class AdminController extends Controller
         return view('admin.category');
     }
 
+    public function service()
+    {
+        return view('admin.service');
+    }
+
     public function user()
     {
         return view('admin.users');

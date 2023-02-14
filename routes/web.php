@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/sosmed','sosmed')->name('sosmed');
             Route::get('/skill','skill')->name('skill');
             Route::get('/category','category')->name('category');
+            Route::get('/service','service')->name('service');
         });
         Route::get('/user','user')->name('user');
     });

@@ -22,4 +22,13 @@ trait HasSweetalert
             'text' => 'Jika terhapus, data tidak dapat dikembalikan'
         ]);
     }
+
+    public function alertConfirmSlider()
+    {
+        $this->dispatchBrowserEvent('swal:slider', [
+            'type' => 'warning',
+            'message' => 'Apakah kamu yakin?',
+            'text' => 'Jika terhapus, data tidak dapat dikembalikan'
+        ]);
+    }
 }

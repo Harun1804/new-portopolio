@@ -9,15 +9,17 @@ use App\Traits\HasSweetalert;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Portopolio as ModelsPortopolio;
+use App\Models\PortopolioSlideshow;
 
 class Portopolio extends Component
 {
     use HasSweetalert, WithFileUploads, HasImage;
 
-    public $is_form = false;
+    public $is_form = false, $is_detail = false;
     public $category_id, $name, $description, $start_date, $end_date, $url, $client, $thumbnail, $portopolio_id;
-    public $categories, $user;
-    protected $listeners = ['destroy'];
+    public $imageShow, $slider_id;
+    public $categories, $user, $sliders;
+    protected $listeners = ['destroy','deleteSlideshow'];
 
     public function mount()
     {
@@ -47,6 +49,14 @@ class Portopolio extends Component
         $this->client       = null;
         $this->thumbnail    = null;
         $this->portopolio_id = null;
+    }
+
+    private function removeSliderImages($portopolio_id)
+    {
+        $sliders = PortopolioSlideshow::getByPortopolio($portopolio_id)->get();
+        foreach ($sliders as $slider) {
+            $this->removeImage($slider->image,'slider');
+        }
     }
 
     public function render()
@@ -127,8 +137,7 @@ class Portopolio extends Component
 
     public function confirm($id)
     {
-        $portopolio = ModelsPortopolio::find($id);
-        $this->portopolio_id = $portopolio->id;
+        $this->portopolio_id = $id;
         $this->alertConfirm();
     }
 
@@ -136,7 +145,50 @@ class Portopolio extends Component
     {
         $portopolio = ModelsPortopolio::find($this->portopolio_id);
         $this->removeImage($portopolio->thumbnail,'thumbnail');
+        $this->removeSliderImages($portopolio->id);
         $portopolio->delete();
         $this->alert('success','Portopolio Has Been Deleted');
+    }
+
+    public function show($id)
+    {
+        $this->portopolio_id = $id;
+        $this->sliders = PortopolioSlideshow::getByPortopolio($id)->get();
+        $this->is_detail = true;
+    }
+
+    public function addSlideshow()
+    {
+        $this->validate([
+            'imageShow' => 'required|image|max:2048'
+        ]);
+
+        $this->uploadImage($this->imageShow,'slider');
+        PortopolioSlideshow::create([
+            'portopolio_id' => $this->portopolio_id,
+            'image'         => $this->imageShow->hashName()
+        ]);
+        $this->imageShow = null;
+        $this->alert('success','Slider Has Been Added');
+    }
+
+    public function confirmSlideshow($id)
+    {
+        $this->slider_id = $id;
+        $this->alertConfirmSlider();
+    }
+
+    public function deleteSlideshow()
+    {
+        $slider = PortopolioSlideshow::find($this->slider_id);
+        $this->removeImage($slider->image,'slider');
+        $slider->delete();
+        $this->alert('success','Slider Has Been Deleted');
+    }
+
+    public function closeShow()
+    {
+        $this->portopolio_id    = false;
+        $this->is_detail        = false;
     }
 }

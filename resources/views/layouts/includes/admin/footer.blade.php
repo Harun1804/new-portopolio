@@ -27,4 +27,21 @@
             }
         });
     });
+
+    window.addEventListener('swal:slider', event => {
+        swal.fire({
+            title: event.detail.message,
+            text: event.detail.text,
+            icon: event.detail.type,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya'
+        })
+        .then((willDelete) => {
+            if (willDelete.isConfirmed) {
+                window.livewire.emit('deleteSlideshow');
+            }
+        });
+    });
 </script>

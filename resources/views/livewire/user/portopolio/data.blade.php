@@ -19,19 +19,15 @@
                     <li class="list-group-item d-flex justify-content-between align-items-start">Client <span class="badge bg-primary rounded-pill">{{ $portopolio->client }}</span></li>
                 </ul>
                 <div class="card-footer">
-                    <a href="#" class="card-link btn btn-sm btn-info text-white">Detail</a>
+                    <button type="button" class="card-link btn btn-sm btn-info text-white" wire:click="show({{ $portopolio->id }})">Detail</button>
                     <button type="button" class="card-link btn btn-sm btn-warning text-white" wire:click="edit({{ $portopolio->id }})">Edit</button>
                     <button type="button" class="card-link btn btn-sm btn-danger text-white" wire:click="confirm({{ $portopolio->id }})">Delete</button>
-                    {{-- <form method="post" wire:submit.prevent="confirm({{ $portopolio->id }})" class="d-inline">
-                        @csrf
-                        <button type="submit" class="card-link btn btn-sm btn-danger text-white">Delete</button>
-                    </form> --}}
                 </div>
             </div>
         </div>
         @empty
         <div class="col-md-12">
-            <div class="alert alert-info">Belum Ada Portopolio</div>
+            <div class="alert alert-info" style="text-align: center">Belum Ada Portopolio</div>
         </div>
         @endforelse
     </div>

@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Job;
 use App\Models\About;
 use App\Models\Skill;
+use App\Models\Service;
 use App\Models\Portopolio;
 use App\Models\SocialMedia;
 use Laravel\Sanctum\HasApiTokens;
@@ -73,6 +74,11 @@ class User extends Authenticatable
     public function portopolios()
     {
         return $this->hasMany(Portopolio::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
     }
 
     public function scopeSearching($query, $name, $email)

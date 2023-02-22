@@ -41,9 +41,12 @@ Route::middleware('auth')->group(function(){
 
     Route::prefix('/user')->controller(UserController::class)->name('user.')->group(function(){
         Route::get('/dashboard','dashboard')->name('dashboard');
+        Route::prefix('/assign')->name('assign.')->group(function(){
+            Route::get('/sosmed','sosmed')->name('sosmed');
+            Route::get('/skill','skill')->name('skill');
+            Route::get('/service','service')->name('service');
+        });
         Route::get('/about','about')->name('about');
-        Route::get('/sosmed','sosmed')->name('sosmed');
-        Route::get('/skill','skill')->name('skill');
         Route::get('/portopolio','portopolio')->name('portopolio');
     });
 });

@@ -11,29 +11,20 @@
                             <table class="table table-hover table-striped mb-0">
                                 <thead>
                                     <tr>
-                                        <th><input type="text" class="form-control" placeholder="Pencarian Berdasarkan Nama" wire:model='name'></th>
-                                        <th><input type="text" class="form-control" placeholder="Pencarian Berdasarkan Icon" wire:model='icon'></th>
-                                        <th>&nbsp;</th>
-                                        <th>&nbsp;</th>
+                                        <th><input type="text" class="form-control" placeholder="Pencarian Berdasarkan Name"></th>
                                         <th>&nbsp;</th>
                                     </tr>
                                     <tr>
-                                        <th>NAMA</th>
-                                        <th>ICON SERVICE</th>
-                                        <th>DESKRIPSI</th>
-                                        <th>JUMLAH YANG MEMILIKI SERVICE INI</th>
+                                        <th>NAMA PELAYANAN</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($services as $service)
+                                    @forelse ($user->services as $service)
                                     <tr>
-                                        <td class="text-bold-500">{{ ucfirst($service->name ) }}</td>
-                                        <td class="text-bold-500"><i class="{{ $service->icon }}"></i></td>
-                                        <td class="text-bold-500">{{ $service->description }}</td>
-                                        <td class="text-bold-500">{{ $service->users_count }}</td>
+                                        <td class="text-bold-500">{{ $service->name }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-warning d-inline text-white mb-1" wire:click="edit({{ $service->id }})">Edit</button>
+                                            <button type="button" class="btn btn-sm btn-warning d-inline text-white" wire:click="edit({{ $service->id }})">Edit</button>
                                             <form method="post" wire:submit.prevent="confirm({{ $service->id }})" class="d-inline">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -42,7 +33,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="5" style="text-align: center">No Data Found</td>
+                                        <td colspan="4" style="text-align: center">No Data Found</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
@@ -51,7 +42,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ $services->links('pagination::bootstrap-5') }}
+                    {{-- {{ $sosmeds->links('pagination::bootstrap-5') }} --}}
                 </div>
             </div>
         </div>

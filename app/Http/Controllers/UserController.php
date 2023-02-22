@@ -30,4 +30,9 @@ class UserController extends Controller
     {
         return view('user.portopolio');
     }
+
+    public function service()
+    {
+        return view('user.service');
+    }
 }

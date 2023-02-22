@@ -92,24 +92,28 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item has-sub {{ (Request::segment(2) == 'assign') ? 'active' : '' }}">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-arrow-left-right"></i>
+                            <span>Assign</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item {{ (Request::segment(3) == 'sosmed') ? 'active' : '' }}">
+                                <a href="{{ route('user.assign.sosmed') }}">Sosial Media</a>
+                            </li>
+                            <li class="submenu-item {{ (Request::segment(3) == 'skill') ? 'active' : '' }}">
+                                <a href="{{ route('user.assign.skill') }}">Skill</a>
+                            </li>
+                            <li class="submenu-item {{ (Request::segment(3) == 'service') ? 'active' : '' }}">
+                                <a href="{{ route('user.assign.service') }}">Service</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-item {{ (Request::segment(2) == 'about') ? 'active' : '' }}">
                         <a href="{{ route('user.about') }}" class="sidebar-link">
                             <i class="bi bi-info-circle"></i>
                             <span>About</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item {{ (Request::segment(2) == 'sosmed') ? 'active' : '' }}">
-                        <a href="{{ route('user.sosmed') }}" class="sidebar-link">
-                            <i class="bi bi-instagram"></i>
-                            <span>Sosial Media</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item {{ (Request::segment(2) == 'skill') ? 'active' : '' }}">
-                        <a href="{{ route('user.skill') }}" class="sidebar-link">
-                            <i class="bi bi-list-stars"></i>
-                            <span>Skill</span>
                         </a>
                     </li>
 

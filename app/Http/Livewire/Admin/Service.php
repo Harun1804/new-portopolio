@@ -32,7 +32,7 @@ class Service extends Component
 
     public function render()
     {
-        $services = ModelsService::searching($this->name, $this->icon)->latest()->paginate(10);
+        $services = ModelsService::withCount('users')->searching($this->name, $this->icon)->latest()->paginate(10);
         return view('livewire.admin.service.index', compact('services'));
     }
 

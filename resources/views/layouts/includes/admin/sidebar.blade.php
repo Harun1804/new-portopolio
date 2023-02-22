@@ -123,6 +123,13 @@
                             <span>Portopolio</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'education') ? 'active' : '' }}">
+                        <a href="{{ route('user.education') }}" class="sidebar-link">
+                            <i class="bi bi-rocket-takeoff"></i>
+                            <span>Education</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

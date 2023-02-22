@@ -35,4 +35,9 @@ class UserController extends Controller
     {
         return view('user.service');
     }
+
+    public function education()
+    {
+        return view('user.education');
+    }
 }

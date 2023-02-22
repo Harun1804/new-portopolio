@@ -48,5 +48,6 @@ Route::middleware('auth')->group(function(){
         });
         Route::get('/about','about')->name('about');
         Route::get('/portopolio','portopolio')->name('portopolio');
+        Route::get('/education','education')->name('education');
     });
 });

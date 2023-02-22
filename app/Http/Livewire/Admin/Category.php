@@ -99,6 +99,6 @@ class Category extends Component
     public function destroy()
     {
         ModelsCategory::find($this->category_id)->delete();
-        $this->alert('success','Skill Has Been Deleted');
+        $this->alert('success','Category Has Been Deleted');
     }
 }

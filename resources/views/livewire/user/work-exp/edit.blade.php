@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="description" class="form-label">Deskripsi Pekerjaan (*Pisahkan dengan enter)</label>
                                     <textarea class="form-control @error('activity') is-invalid @enderror" id="description" rows="3"
@@ -89,7 +89,7 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-sm btn-primary">Perbaharui</button>

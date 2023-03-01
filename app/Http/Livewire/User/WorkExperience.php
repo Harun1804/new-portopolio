@@ -121,24 +121,6 @@ class WorkExperience extends Component
                 'nation'    => $this->nation,
             ])->save();
 
-            $activities = explode("\n", $this->activity);
-            $oldActivities = WorkExperienceDetail::where('work_experience_id', $this->work_exp_id)->get();
-            foreach ($oldActivities as $oldActivity) {
-                $detail = WorkExperienceDetail::find($oldActivity->id);
-                foreach ($activities as $newActivity) {
-                    if (!empty($newActivity)) {
-                        if ($oldActivity->activity != $newActivity && $oldActivity->work_experience_id == $this->work_exp_id) {
-                            $this->updateActivity($detail, $newActivity);
-                        }elseif($oldActivity->activity != $newActivity && $oldActivity->work_experience_id != $this->work_exp_id){
-                            WorkExperienceDetail::create([
-                                'work_experience_id'    => $this->work_exp_id,
-                                'activity'              => $newActivity
-                            ]);
-                        }
-                    }
-                }
-            }
-
             DB::commit();
             $this->resetForm();
             $this->is_form = false;
@@ -161,12 +143,5 @@ class WorkExperience extends Component
     {
         ModelsWorkExperience::find($this->work_exp_id)->delete();
         $this->alert('success','Work Experience Has Been Deleted');
-    }
-
-    private function updateActivity($detail, $newActivity)
-    {
-        $detail->update([
-            'activity' => $newActivity
-        ]);
     }
 }

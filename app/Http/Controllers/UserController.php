@@ -40,4 +40,9 @@ class UserController extends Controller
     {
         return view('user.education');
     }
+
+    public function workExperience()
+    {
+        return view('user.work-exp');
+    }
 }

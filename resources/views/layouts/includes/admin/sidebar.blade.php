@@ -130,6 +130,13 @@
                             <span>Education</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ (Request::segment(2) == 'work-exp') ? 'active' : '' }}">
+                        <a href="{{ route('user.workExp') }}" class="sidebar-link">
+                            <i class="bi bi-briefcase"></i>
+                            <span>Work Experience</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>
